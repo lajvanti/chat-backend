@@ -17,7 +17,7 @@ const io = new Server(httpServer, {
 });
 
 const port = process.env.PORT || 5000;
-const dbURL = process.env.ATLAS_URL||"mongodb+srv://lajvantisonaiya:lajvantisonaiya@cluster0.p1tiwlg.mongodb.net/?retryWrites=true&w=majority";
+const dbURL = process.env.ATLAS_URL;
 
 app.use(express.json());
 app.use(cors());
