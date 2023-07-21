@@ -32,7 +32,6 @@ const sendMessage = async (req, res) => {
     console.log(err);
   }
 };
-
 const sendImage = async (req, res) => {
   console.log("sendImage calleddd");
   const { from, to } = req.body;

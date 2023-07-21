@@ -7,13 +7,23 @@ const {
   viewMessage,
   changeStatus,
 } = require("../controller/messageController");
+const chatApi = require("../controller/chatGptController");
 const { isAuthenticated } = require("../middleware/validateToken");
 const { imageUpload } = require("../middleware/multer");
-
 router.post("/sendMessage", isAuthenticated, sendMessage);
 router.post("/sendImage", imageUpload, sendImage);
 router.post("/getAllMessage", isAuthenticated, getAllMessage);
 router.post("/isViewMessage", isAuthenticated, viewMessage);
 router.post("/changeStatus", isAuthenticated, changeStatus);
+router.post("/chatapi", chatApi);
+
+// router.post("/chatapi", async (req, res) => {
+//   // const msg = req.body.message;
+//   const response = await chatApi(req, res);
+//   console.log("response response", response);
+//   return res.json({
+//     message: response,
+//   });
+// });
 
 module.exports = router;

@@ -22,7 +22,8 @@ const dbURL = process.env.ATLAS_URL;
 app.use(express.json());
 app.use(cors());
 app.use("/api/user", userRoutes);
-app.use("/api/message", messageRoutes);
+
+app.use("/api/message",messageRoutes);
 app.use("/public", express.static("public"));
 
 // app.use((err, req, res, next) => {
