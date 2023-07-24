@@ -29,4 +29,23 @@ const chatApi = async (req, res) => {
     console.log("error", err);
   }
 };
-module.exports = chatApi;
+
+const imagGenrator = async (req, res) => {
+  const { message } = req.body;
+
+  if (!message) {
+    return res.json({
+      message: "message is required",
+    });
+  }
+  const response = await openai.createImage({
+    prompt: message,
+    n: 1,
+    size: "1024x1024",
+  });
+  image_url = response.data.data[0].url;
+  return res.json({
+    message: image_url,
+  });
+};
+module.exports = { chatApi, imagGenrator };
