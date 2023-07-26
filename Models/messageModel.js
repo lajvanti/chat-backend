@@ -22,6 +22,9 @@ const messageSchema = new mongoose.Schema(
     attechment: {
       type: String,
     },
+    msg_type: {
+      type: String,
+    },
   },
   {
     timestamps: true,

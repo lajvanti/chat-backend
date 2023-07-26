@@ -2,7 +2,7 @@ const messageModel = require("../Models/messageModel");
 
 const sendMessage = async (req, res) => {
   // const data = await messageModel.deleteMany();
-  const { from, to, message } = req.body;
+  const { from, to, message, msg_type } = req.body;
   console.log("sendMessage called", req.body);
   if (!from || !to) {
     return res.json({
@@ -15,6 +15,7 @@ const sendMessage = async (req, res) => {
       text: message ? message : "",
       to: to,
       from: from,
+      msg_type: msg_type,
       isView: false,
     });
     if (data) {
@@ -34,7 +35,8 @@ const sendMessage = async (req, res) => {
 };
 const sendImage = async (req, res) => {
   console.log("sendImage calleddd");
-  const { from, to } = req.body;
+
+  const { from, to, msg_type } = req.body;
   if (!req.file) {
     console.log("file require");
   }
@@ -52,6 +54,7 @@ const sendImage = async (req, res) => {
       to: to,
       from: from,
       isView: false,
+      msg_type: msg_type,
     });
     if (data) {
       console.log("data", data);
@@ -84,6 +87,7 @@ const getAllMessage = async (req, res) => {
       return {
         fromSelf: msg.from.toString() === from,
         message: msg.text,
+        msg_type: msg.msg_type,
         attechment: msg.attechment,
         createdAt: msg.createdAt,
         attechment: msg.attechment,
